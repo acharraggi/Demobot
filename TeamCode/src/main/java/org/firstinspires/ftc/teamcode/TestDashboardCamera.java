@@ -17,7 +17,13 @@ import org.opencv.android.Utils;
 import org.opencv.core.Mat;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 
-@Autonomous
+// This opmode displays the camera stream on the ftc dashboard
+
+//TODO: it will display the camera stream while opmode is running, but the image is upside down
+
+// Note: this is without Tensorflow or April Tag annotations.
+
+@Autonomous(group = "Dashboard")
 public class TestDashboardCamera extends LinearOpMode {
     //private WebcamName webcam1 = hardwareMap.get(WebcamName.class, "Webcam 1");
 

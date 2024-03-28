@@ -29,7 +29,12 @@
 
 package org.firstinspires.ftc.teamcode;
 
+// this method displays status and a counter to the ftc-dashboard, basic telemetry using "packet".
+// I think there's an easier way.
 
+import android.graphics.Color;
+
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -40,7 +45,7 @@ import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 /*
  * Demonstrates an empty iterative OpMode
  */
-@TeleOp(name = "Test Dashboard", group = "Concept")
+@Autonomous(name = "Test Dashboard", group = "Dashboard")
 
 public class TestDashboard extends OpMode {
 
@@ -89,6 +94,27 @@ public class TestDashboard extends OpMode {
     x = x + 1;
     packet.put("status", "running");
     packet.put("x", x);
+    dashboard.sendTelemetryPacket(packet);
+
+/*    packet.fieldOverlay()
+            .setStrokeWidth(1)
+            .setStroke("red")
+            .setFill("green")
+            .setAlpha(1.0)
+            .fillRect(20, 20, 40, 40);;*/
+
+//    packet.fieldOverlay()
+//            .setFill("blue")
+//            .fillRect(-20, -20, 40, 40);
+
+    packet.field();
+    packet.fieldOverlay()
+            // draw rectangle in the original field frame
+            .fillRect(0, 0, 20, 20)
+            // shift the field to be anchored in the center of the left side
+            .setTranslation(0, 6 * 12)
+            // draw rectangle in the new field frame
+            .fillRect(0, 0, 20, 20);
     dashboard.sendTelemetryPacket(packet);
   }
 
